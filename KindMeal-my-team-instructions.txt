@@ -1,0 +1,34 @@
+Project: KindMeal.my
+
+Team Members: 1) Shani Sonkar
+              2) Preeti Raj
+              3) Prateek Soni
+              4) Gautam Kumar
+
+Team Lead:    5) Sanjay Rathva
+
+IA (Manager): Vivek Goswami
+
+Project Work Distribution:
+  1) Shani Sonkar:
+     - Meal Deals Page
+
+  2) Preeti Raj:
+     - Landing Page (i.e., Home Page) and
+     - Help Page
+    
+  3) Prateek Soni:
+     - KindMoments Page and
+     - MobileApp Page
+
+  4) Gautam Kumar:
+     - 
+
+  5) Sanjay Rathva:
+     - Directory Page
+     - Login and Sign Up Page
+
+General Instructions and Information:
+  1) Please follow the branch name convention:
+     - For exmaple, student_code-day-1 ( e.g., fw16_0299-day-1, fw18_0288-day-2, etc.)
+  2) Please Push your work or task on day-wise branch
