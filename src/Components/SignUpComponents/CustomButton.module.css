@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.bgred {
+  background-color: #f53838;
+  padding: 10px 32px;
+}
+
+.bgred:hover {
+  background-color: rgb(209, 19, 19);
+}
+
+.medium {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.white {
+  color: white;
+  font-family: "Roboto", Arial;
+}
+
+.sm {
+  width: 150px;
+}
+
+.md {
+  width: 300px;
+}
+
+.roundedCorner {
+  border-radius: 8px;
+  border: 0;
+}

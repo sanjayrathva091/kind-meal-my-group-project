@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.customSignUpForm {
+  border: 0px solid red;
+  font-family: "Roboto", Arial;
+}
+
+.customSignUpForm > form > div {
+  display: grid;
+  grid-template-columns: 300px 600px;
+  gap: 20px;
+  text-align: left;
+}
+
+.customSignUpForm > form > div > p {
+  font-size: 0.95rem;
+  display: flex;
+  align-items: flex-end;
+}
+
+.InputBox {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+  padding: 10px 0;
+  color: #888888;
+}
+
+.InputBox p {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+input[name="First_Name"],
+input[name="Last_Name"] {
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.InputBox input,
+.InputBox select {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.InputBox > label,
+.InputBox > div > label {
+  position: absolute;
+  top: 0;
+  font-size: 12px;
+  color: #888888;
+}
+
+.UserName {
+  display: flex;
+  flex-direction: column;
+}
+
+.UserName label {
+  font-size: 12px;
+  color: #888888;
+}
+
+.UserName p {
+  margin: 0;
+  padding: 0;
+  color: blue;
+}
+
+.birthdate {
+  display: flex;
+  gap: 20px;
+}
+
+.birthdate select {
+  width: 100px;
+  background-color: white;
+  border: 1px solid #cedece;
+  padding: 5px;
+  color: #888888;
+}
+
+select[name="Country"],
+select[name="State"] {
+  width: 340px;
+  background-color: white;
+  border: 1px solid #cedece;
+  padding: 5px;
+  color: #888888;
+}
+
+.customSignUpForm > form > div + div input {
+  width: 62%;
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.uploadBtn {
+  padding: 6px 16px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  border: 0;
+  background-color: #cecece;
+  color: #888888;
+}
+
+.customSignUpForm > form > div.agreeCheckBox {
+  grid-template-columns: 50px max-content;
+  padding-top: 2rem;
+  color: #888888;
+}
+
+.submitBtn {
+  margin-top: 2rem;
+}
