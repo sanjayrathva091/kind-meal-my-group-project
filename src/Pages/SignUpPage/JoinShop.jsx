@@ -1,8 +1,8 @@
 import React from "react";
-import CustomSignUpForm from "../Components/SignUpComponents/CustomSignUpForm";
-import FoodLoverSignUpLogo from "../Components/SignUpComponents/FoodLoverSignUpLogo";
-import ShopOwnerSignUpLogo from "../Components/SignUpComponents/ShopOwnerSignUpLogo";
-import WhyKindMealInfo from "../Components/SignUpComponents/WhyKindMealInfo";
+import CustomSignUpForm from "../../Components/SignUpComponents/CustomSignUpForm";
+import FoodLoverSignUpLogo from "../../Components/SignUpComponents/FoodLoverSignUpLogo";
+import ShopOwnerSignUpLogo from "../../Components/SignUpComponents/ShopOwnerSignUpLogo";
+import WhyKindMealInfo from "../../Components/SignUpComponents/WhyKindMealInfo";
 import styled from "styled-components";
 import sty from "./JoinShop.module.css";
 

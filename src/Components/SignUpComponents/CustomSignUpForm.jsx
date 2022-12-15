@@ -1,21 +1,36 @@
 import React from "react";
+
 import CustomButton from "./CustomButton";
 import styled from "./CustomSignUpForm.module.css";
 
-const CustomSignUpForm = ({ SubmitBtnText }) => {
+const CustomSignUpForm = ({
+  SubmitBtnText,
+  handleInputChange,
+  handleJoinSubmit,
+}) => {
   return (
     <div className={styled.customSignUpForm}>
-      <form>
+      <form onSubmit={handleJoinSubmit}>
         <div>
           <p>Your Name</p>
           <div className={`${styled.InputBox}`}>
             <div>
               <label htmlFor="">First Name</label>
-              <input type="text" name="First_Name" />
+              <input
+                className="user"
+                type="text"
+                name="First_Name"
+                onChange={handleInputChange}
+              />
             </div>
             <div>
               <label htmlFor="">Last Name</label>
-              <input type="text" name="Last_Name" />
+              <input
+                className="user"
+                type="text"
+                name="Last_Name"
+                onChange={handleInputChange}
+              />
             </div>
           </div>
         </div>
@@ -25,19 +40,34 @@ const CustomSignUpForm = ({ SubmitBtnText }) => {
             <label htmlFor="">
               Your email must be correct to receive activation email
             </label>
-            <input type="email" name="email" />
+            <input
+              className="user"
+              type="email"
+              name="email"
+              onChange={handleInputChange}
+            />
           </div>
         </div>
         <div>
           <p>Re-Enter Email</p>
           <div className={styled.InputBox}>
-            <input type="email" name="reEnterEmail" />
+            <input
+              className="user"
+              type="email"
+              name="reEnterEmail"
+              onChange={handleInputChange}
+            />
           </div>
         </div>
         <div>
           <p>Password</p>
           <div className={styled.InputBox}>
-            <input type="password" name="password" />
+            <input
+              className="user"
+              type="password"
+              name="password"
+              onChange={handleInputChange}
+            />
           </div>
         </div>
         <div>
@@ -48,7 +78,7 @@ const CustomSignUpForm = ({ SubmitBtnText }) => {
               reviews
             </label>
             <p>http://KindMeal.my/Username</p>
-            <input type="text" />
+            <input type="text" name="username" onChange={handleInputChange} />
           </div>
         </div>
         <div>
@@ -116,6 +146,7 @@ const CustomSignUpForm = ({ SubmitBtnText }) => {
             width="md"
             fontSize="medium"
             variant="roundedCorner"
+            Type="submit"
           />
         </div>
       </form>

@@ -1,7 +1,30 @@
-import React from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { auth } from "../../firebase-config";
+import { login } from "../../Redux/AuthReducer/authAction";
 
 const Login = () => {
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const handleEmailInput = (e) => {
+    setLoginEmail(e.target.value);
+  };
+
+  const handlePasswordInput = (e) => {
+    setLoginPassword(e.target.value);
+  };
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login(auth, loginEmail, loginPassword));
+    setLoginEmail("");
+    setLoginPassword("");
+  };
+
   return (
     <LoginPageWrapper>
       <LoginPage>
@@ -12,12 +35,12 @@ const Login = () => {
           />
         </ImgBoxLogoWrapper>
         <h2>Member Login</h2>
-        <form>
+        <form onSubmit={handleLoginSubmit}>
           <div>
-            <input type="email" />
+            <input type="email" onChange={handleEmailInput} />
           </div>
           <div>
-            <input type="password" />
+            <input type="password" onChange={handlePasswordInput} />
           </div>
           <div>
             <input type="radio" name="UserType" value="User" defaultChecked />{" "}

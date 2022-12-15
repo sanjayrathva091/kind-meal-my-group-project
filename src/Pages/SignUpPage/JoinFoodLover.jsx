@@ -1,11 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import { initialUserState } from "../../Redux/AuthReducer/AuthReducer";
 import CustomSignUpForm from "../../Components/SignUpComponents/CustomSignUpForm";
 import FoodLoverSignUpLogo from "../../Components/SignUpComponents/FoodLoverSignUpLogo";
 import ShopOwnerSignUpLogo from "../../Components/SignUpComponents/ShopOwnerSignUpLogo";
 import WhyKindMealInfo from "../../Components/SignUpComponents/WhyKindMealInfo";
 import styled from "./JoinFoodLover.module.css";
+import { auth } from "../../firebase-config";
+
+import { register } from "../../Redux/AuthReducer/authAction";
+import { useDispatch } from "react-redux";
 
 const JoinFoodLover = () => {
+  const [user, setUser] = useState(initialUserState);
+  const dispatch = useDispatch();
+
+  const handleInputChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    const cls = event.target.className;
+    if (cls === "user") {
+      setUser((prev) => ({
+        ...prev,
+        user: { ...prev.user, [name]: value },
+      }));
+    }
+  };
+
+  const handleJoinSubmit = (event) => {
+    event.preventDefault();
+
+    const { email, password } = user.user;
+    dispatch(register(auth, email, password, user));
+  };
+
   return (
     <div className={styled.JoinFoodLover}>
       <div className={styled.JoinSidebar}>
@@ -30,7 +57,11 @@ const JoinFoodLover = () => {
             health and save your money at the same time!
           </p>
         </div>
-        <CustomSignUpForm SubmitBtnText="Join Now" />
+        <CustomSignUpForm
+          SubmitBtnText="Join Now"
+          handleInputChange={handleInputChange}
+          handleJoinSubmit={handleJoinSubmit}
+        />
       </div>
     </div>
   );

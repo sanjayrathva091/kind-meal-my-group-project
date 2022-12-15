@@ -1,16 +1,19 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const ShopOwnerSignUpLogo = () => {
   return (
     <BoxWrapper>
-      <SOWrapper>
-        <img
-          src="https://www.kindmeal.my/images/join_shop.png"
-          alt="joinShop"
-        />
-        <p>Restaurant Sign Up</p>
-      </SOWrapper>
+      <NavLink style={{ textDecoration: "none" }} to="/signup/joinshop">
+        <SOWrapper>
+          <img
+            src="https://www.kindmeal.my/images/join_shop.png"
+            alt="joinShop"
+          />
+          <p>Restaurant Sign Up</p>
+        </SOWrapper>
+      </NavLink>
     </BoxWrapper>
   );
 };

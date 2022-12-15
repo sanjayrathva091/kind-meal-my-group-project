@@ -9,10 +9,11 @@ const CustomButton = ({
   height,
   fontSize,
   variant,
+  Type,
 }) => {
-  console.log(colorScheme);
   return (
     <button
+      type={Type}
       className={`${styled[variant]} ${styled[fontSize]} ${styled[colorScheme]} ${styled[textColor]} ${styled[width]} ${styled[height]}`}
     >
       {BtnText}
