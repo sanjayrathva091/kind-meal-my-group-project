@@ -41,7 +41,7 @@
    
 }
 .bnn{
-    background-color: #e1e1e1 ;
+    background-color: white ;
 }
 .homepage_box1_img{
     width:200px;
@@ -86,12 +86,14 @@ background-color: white;
     gap: -10px;
 }
 .bottom_section{
+    padding-top: 10px;
     color: #666666;
     width: 100%;
     margin: auto;
     border: 1px solid transparents;
     /* align-items: center; */
     text-align: center;
+    background-color: white;
 }
 .newsides{
     width:75%;
@@ -108,7 +110,10 @@ background-color: white;
 
 }
 .bottom_section_divs_imgbox>img{
-    width:100%;
+    width:80%;
+    height:100px;
+    margin:auto;
+    padding:10px;
 }
 .bottom_section_divs_imgbox{
 
@@ -118,18 +123,28 @@ background-color: white;
     padding: 10px;
     text-align: center;
     color: #666666;
-    vertical-align: middle;
     margin-left: 20px;
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 500;
     margin-top: 20px;
     margin-bottom: 25px;
 }
 .bottom_section_divs{
     width:80%;
     margin: auto;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #9c9b9b;
 }
-
+.bottom_section_divs>p{
+    font-size:24px;
+    font-weight: 500;
+}
+.bottom_section_divs>h1{
+    font-size:35px;
+    font-weight: 500;
+    color:rgb(80, 79, 79);
+}
 #btnredred{
     border: 1px solid transparent;
     width: 80%;
@@ -148,15 +163,20 @@ background-color: white;
     border-radius: 10px;
     margin: auto;
     /* margin-top: 40px;
-    margin-bottom: 80px; */
+    margin-bottom: 80px; 
     /* margin-left: 18rem; */
     left: 20%;
 }
+
 
 #redbutton_mainpage>a>h1{
     color: white;
    font-size: 30px;
    text-decoration: none;
+}
+#redbutton_mainpage>a>p{
+    font-size:18px;
+
 }
 .images_maao{
     width:80%;
@@ -176,12 +196,11 @@ background-color: white;
     text-decoration: none;
 }
 #redbutton_mainpage:hover{
-    background-color: red;
+    background-color: rgb(179, 2, 2);
 }
 #redbutton_mainpage{
     border: 1px solid transparent;
 }
-
 @media screen and (max-width: 1024px) {
     .homepage_box1{
         border: 1px solid #dddddd;
@@ -242,6 +261,7 @@ background-color: white;
     }
     .bottom_section{
         color: #666666;
+        background-color: white;
     }
     .newsides{
         width:75%;
@@ -320,6 +340,7 @@ background-color: white;
     #redbutton_mainpage{
         border: 1px solid transparent;
     }
+    
 
 
 }
@@ -481,7 +502,6 @@ background-color: white;
         box-shadow: 0px 0px 6px #e0e0e0;
         font-size: 12px;
         margin: auto;
-       
         color: #666666;
     }
     .headline__mainpage_h2
@@ -502,8 +522,9 @@ background-color: white;
        
     }
     .homepage_box1_img{
-        width:100%;
-        height: 80%;
+        width:170px;
+        height: 170px;
+        margin: auto;
        
     }
     .homepage_box1_headline{
@@ -519,9 +540,9 @@ background-color: white;
     }
     
     .homepage_box1_desc{
-        width:85%;
+        width:90%;
         margin:auto;
-        font-size: 15px;
+        font-size: 13px;
     }
     #sideside{
         display: grid;
@@ -530,6 +551,7 @@ background-color: white;
     }
     .bottom_section{
         color: #666666;
+        background-color: white;
     }
     .newsides{
         width:75%;
@@ -542,14 +564,16 @@ background-color: white;
         margin: auto;
     }
     .padpad_pad{
-        height:30px
+        height:30px;
     }
     #petfinderlogo{
         width:70%;
     
     }
     .bottom_section_divs_imgbox>img{
-        width:100%;
+        width:100px;
+        height:100px;
+        margin:auto;
     }
     .bottom_section_divs_imgbox{
     
@@ -559,19 +583,24 @@ background-color: white;
         padding: 10px;
         text-align: center;
         color: #666666;
-        vertical-align: middle;
-        margin-left: 20px;
+        margin-left: 0px;
         font-size: 12px;
-        margin-top: 20px;
         margin-bottom: 25px;
+        margin-right: 3px;
     }
     .bottom_section_divs{
         width:80%;
         margin: auto;
         font-size: 16px;
     }
+    .bottom_section_divs>h1{
+        font-size: 15px;
+    }
+    .bottom_section_divs>p{
+        font-size: 15px;
+    }
     #redbutton_mainpage{
-        width:95%;
+        width:70%;
         background-color: #f53838;
         color: #ffffff;
         font-weight: bold;
@@ -580,15 +609,19 @@ background-color: white;
         vertical-align: middle;
         font-family: 'Roboto', Arial;
         border-radius: 10px;
-        
+        font-size: 12px;
         margin-top: 40px;
         margin-bottom: 80px;
     }
     
     #redbutton_mainpage>a>h1{
         color: white;
-       font-size: 30px;
+       font-size: 15px;
        text-decoration: none;
+    }
+    #redbutton_mainpage>a>p{
+        font-size:10px;
+        padding-top:10px;
     }
     .images_maao{
         width:100%;
