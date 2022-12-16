@@ -1,13 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {FaComment,FaHeart} from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import styled from "styled-components"
+import { useDispatch } from 'react-redux';
+import { EditReq, EditReqFailure, EditReqMainFn, EditReqSuccess, GetdataMainfn } from '../Redux_0381/action';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
-export const Kindcard = ({item}) => {
+export const Kindcard1 = ({item}) => {
+const dispatch = useDispatch()
+const navigate = useNavigate()
 
+    const HandleEdit=(id)=>{
+        dispatch(EditReq())
+    const newValue = item.heartcount+1
+    dispatch(EditReqMainFn( `https://kindmeals.onrender.com/KindMonents_Lower/${id}`,{heartcount:newValue}))
+    .then((res)=>{
+       dispatch(EditReqSuccess(res.data))
+    })
+    .catch((err)=>{
+    dispatch(EditReqFailure())
+    })
+navigate("/MainKindMoments")
+    }
 
 
   return (
@@ -56,9 +73,11 @@ marginRight:"15px"
 {/* ---- */}
 {/* icons */}
 <div>
-<span style={{color:"#797877"}}><FaComment/> {item.heartcount}</span>
-<span  style={{marginLeft:"15px",color:"#797877"}}  ><BsFillCameraFill/> {item.heartcount}</span>
-<span style={{marginLeft:"15px",color:"#797877"}} ><FaHeart/> 2</span>
+<span style={{color:"#797877"}}><FaComment/> 0</span>
+<span  style={{marginLeft:"15px",color:"#797877"}}  ><BsFillCameraFill/> 0</span>
+
+<span style={{marginLeft:"15px",color:"red"}} 
+onClick={()=>HandleEdit(item.id)}><FaHeart/> {item.heartcount}</span>
 
 <div><p>  {item.Description}</p></div>
 

@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Kindcard } from '../components/Kindcard'
+import { Kindcard } from '../M/Kindcard'
 import styled from "styled-components"
 import { GetdataMainfn } from '../Redux_0381/action'
 import { useSearchParams } from 'react-router-dom'
+import Pagination from './Pagination'
 
 export const Kindmoments = () => {
 
 const dispatch = useDispatch()
-const kindmeallist = useSelector((store)=>store.Data)
+const kindmeallist = useSelector((store)=>store.Reducer1.Data)
 // console.log(kindmeallist)
 let [searchParams, setSearchParams] = useSearchParams();
 const [task,setTask] = useState("")
@@ -17,29 +18,39 @@ const [task1,setTask1] = useState("")
 const[page,setPage] = useState(1)
 
 
+
 const SearchByplace =()=>{
-   dispatch(GetdataMainfn(task))
+  setTask1("")
+    dispatch(GetdataMainfn({task,page}))
 
    setTask("")
    
 }
-
+console.log(kindmeallist)
 
 useEffect(()=>{
-if(kindmeallist.length == 0 ){
-    dispatch(GetdataMainfn())
-}
+
+    dispatch(GetdataMainfn({page}))
+   
+
 if(task1){
-    dispatch(GetdataMainfn(task1))
-    console.log(task1)
-    setTask1("")
+    
+    if(task1=="All"){
+       dispatch(GetdataMainfn({page}))
+    }else{
+        dispatch(GetdataMainfn({task1,page}))
+    }
+  
+    // console.log(task1)
+    // setTask1("")
 }
-},[dispatch,kindmeallist.length,task1])
+},[dispatch,kindmeallist.length,task1,page])
 
 
 
   return (
     <div>
+        <h1>Data 1</h1>
 <InputWrapper>
 
 <button  style={{backgroundColor:"#2bb673 ",color:"white",height:"30px",width:"130px",
@@ -60,7 +71,7 @@ borderRadius:"7px" , borderColor:"transparent",marginLeft:"30px"}}  >Following</
 }}   onChange={(e)=>setTask1(e.target.value)}
 
 >
-<option >All Location</option>
+<option value="All">All Location</option>
     <option value="India" >India</option>
     <option value="America" >America</option>
     <option value="Thailand" >Thailand</option>
@@ -73,6 +84,11 @@ borderRadius:"7px" , borderColor:"transparent",marginLeft:"30px"
 
 </InputWrapper>
     
+   <div style={{display:"flex" , margin:"auto" , gap:"20x", width:"90%"}}  >
+    <div>Pages :</div>
+     <div style={{marginLeft:"5px"}}> <Pagination current={page} onChange={(page)=>setPage(page)}   /></div>
+   </div>
+
     <Wrapper >
     
 {
