@@ -179,6 +179,11 @@ const AdminsPage = styled.div`
   display: grid;
   grid-template-columns: 300px 1fr;
   text-align: left;
+  div > h1 {
+    color: #2bb673;
+    font-family: "Roboto", Arial;
+    font-weight: 400;
+  }
   form {
     border: 0px solid black;
   }

@@ -1,15 +1,56 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
+import DirectoryCard from "../../Components/DirectoryPageComponents/DirectoryCard";
 import { getVegRes } from "../../Redux/AppReducer/actions";
 
 const DirectoryPage = () => {
   const shopDir = useSelector((store) => store.AppReducer.vegRes);
+  const totalData = useSelector((store) => store.AppReducer.totalData);
+
   const dispatch = useDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [city, setCity] = useState(searchParams.get("Address.City") || "");
+  const [pageNo, setPageNo] = useState(searchParams.get("_page") || 1);
+  const [btnArr] = useState(Array(Math.ceil(41 / 4)).fill(1));
+
+  const FilterByCityHandler = (e) => {
+    setCity(e.target.value);
+  };
+
+  const PageNoHandler = (e) => {
+    setPageNo(e.target.value);
+  };
 
   useEffect(() => {
-    dispatch(getVegRes());
-  }, []);
+    console.log("Page No:", pageNo, searchParams.get("_page"));
+    const queryParams = {
+      _page: pageNo,
+      _limit: 4,
+    };
+    if (city !== "") {
+      queryParams["Address.City"] = city;
+    }
+    setSearchParams(queryParams);
+  }, [city, pageNo, searchParams, setSearchParams]);
+
+  useEffect(() => {
+    const city = searchParams.get("Address.City");
+    const page = searchParams.get("_page");
+    const limit = searchParams.get("_limit");
+    console.log("hello", city, page, limit);
+    const queryParams = {
+      params: {
+        _page: page,
+        _limit: limit,
+      },
+    };
+    if (city !== null) {
+      queryParams.params["Address.City"] = city;
+    }
+    dispatch(getVegRes(queryParams));
+  }, [city, searchParams, dispatch]);
 
   return (
     <DirectoryPageWrapper>
@@ -28,15 +69,21 @@ const DirectoryPage = () => {
             </p>
             <div className="searchShop">
               <input type="text" placeholder="Search Shop Name" />
-              <select name="">
+              <select name="" onChange={FilterByCityHandler}>
                 <option value="">All Shops in Malaysia</option>
+                <option value="Kuala+Lumpur">Kuala Lumpur</option>
+                <option value="Selangor">Selangor</option>
+                <option value="Johor">Johor</option>
+                <option value="Ampang">Ampang</option>
+                <option value="Kepong">Kepong</option>
               </select>
               <button>Search Shops</button>
               <button>Add A Shop</button>
             </div>
           </div>
         </div>
-        {console.log("Loaded", shopDir)}
+        {console.log("data size", btnArr, totalData)}
+
         <div className="main-container">
           <div className="filter-container">
             <button>Vegetarian Directory</button>
@@ -44,9 +91,38 @@ const DirectoryPage = () => {
             <button>Food Menu</button>
             <button>Food Map</button>
           </div>
-          <div></div>
-          <div className="cards-container">{/* Add Cards here */}</div>
-          <div></div>
+          <div className="pageBtn">
+            {/* Page button */}
+            <span>Page: </span>
+            {btnArr?.map((_, i) => (
+              <button key={i} value={i + 1} onClick={PageNoHandler}>
+                {i + 1}
+              </button>
+            ))}
+          </div>
+          <div className="cards-container">
+            {shopDir?.map((item) => {
+              return (
+                <DirectoryCard
+                  key={item.id}
+                  shopName={item.shopName}
+                  description={item.description}
+                  Address={`${item.Address.Street} ${item.Address.Landmark} ${item.Address.City} ${item.Address.StateOrTerritory}`}
+                  Phone={item.Phone}
+                  OpeningHours={item.OpeningHours}
+                />
+              );
+            })}
+            {shopDir.length === 0 && <h1>No Items Found</h1>}
+          </div>
+          <div className="pageBtn">
+            <span>Page: </span>
+            {btnArr?.map((_, i) => (
+              <button key={i} value={i + 1} onClick={PageNoHandler}>
+                {i + 1}
+              </button>
+            ))}
+          </div>
         </div>
       </Directory>
     </DirectoryPageWrapper>
@@ -61,6 +137,7 @@ const DirectoryPageWrapper = styled.div`
 
 const Directory = styled.div`
   border: 0px solid black;
+
   .searchVegRes {
     background-color: #f0f0f0;
   }
@@ -138,5 +215,29 @@ const Directory = styled.div`
   .filter-container button:focus {
     background-color: #04be5a;
     color: white;
+  }
+  .cards-container {
+    margin: 0 8.8rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, max-content));
+    grid-gap: 3rem;
+  }
+  .pageBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  .pageBtn button {
+    font-size: 1rem;
+    border: 0;
+    background-color: white;
+    color: #04be5a;
+  }
+  .pageBtn button:hover {
+    cursor: pointer;
+  }
+  .pageBtn button:focus {
+    color: #f53838;
   }
 `;
