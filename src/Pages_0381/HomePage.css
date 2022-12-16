@@ -1,0 +1,16 @@
+.banner{
+    background-color: #ececec;
+    width:100%;
+}
+.media{
+    width:80%; 
+}
+.featureON{
+    text-align: center;
+    color: #b0b0b0;
+    font-weight: 400;
+}
+.white{
+    background-color: white;
+    width: 100%;
+}
