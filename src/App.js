@@ -1,10 +1,12 @@
 
 import './App.css';
-import HomePage from './Pages/HomePage'
+import Footer from './Components/Footer/Footer';
+import MainRoutes from './Pages/MainRoutes';
 function App() {
   return (
     <div className="App">
-     <HomePage />
+     <MainRoutes />
+     <Footer />
     </div>
   );
 }
