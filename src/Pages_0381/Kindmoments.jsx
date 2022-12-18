@@ -13,38 +13,37 @@ const dispatch = useDispatch()
 const kindmeallist = useSelector((store)=>store.Reducer1.Data)
 // console.log(kindmeallist)
 let [searchParams, setSearchParams] = useSearchParams();
+// for search inputbox
 const [task,setTask] = useState("")
+// for sliding filter search
 const [task1,setTask1] = useState("")
-const[page,setPage] = useState(1)
+
 
 
 
 const SearchByplace =()=>{
+ 
+if(task){
   setTask1("")
-    dispatch(GetdataMainfn({task,page}))
+  dispatch(GetdataMainfn(task))
+}else{
+  setTask("")
+}
 
-   setTask("")
+  
    
 }
-console.log(kindmeallist)
+
 
 useEffect(()=>{
 
-    dispatch(GetdataMainfn({page}))
-   
-
 if(task1){
-    
-    if(task1=="All"){
-       dispatch(GetdataMainfn({page}))
-    }else{
-        dispatch(GetdataMainfn({task1,page}))
-    }
-  
-    // console.log(task1)
-    // setTask1("")
+     setTask("")
+        dispatch(GetdataMainfn(task1))
+
 }
-},[dispatch,kindmeallist.length,task1,page])
+
+},[dispatch,kindmeallist.length,task1])
 
 
 
@@ -62,7 +61,8 @@ borderRadius:"7px" , borderColor:"transparent",marginLeft:"30px"}}  >Deal Review
 <button  style={{backgroundColor:"#f0f0f0",color:"black",height:"30px",width:"130px",
 borderRadius:"7px" , borderColor:"transparent",marginLeft:"30px"}}  >Following</button>
 
-<input style={{height:"25px",borderRadius:"7px",width:"200px",marginLeft:"150px" }} value={task} placeholder="Search By Country"
+<input style={{height:"25px",borderRadius:"7px",width:"200px",marginLeft:"150px" }}
+value={task} placeholder="Search By Country"
  onChange={(e)=>setTask(e.target.value)}   />
 
 
@@ -84,10 +84,7 @@ borderRadius:"7px" , borderColor:"transparent",marginLeft:"30px"
 
 </InputWrapper>
     
-   <div style={{display:"flex" , margin:"auto" , gap:"20x", width:"90%"}}  >
-    <div>Pages :</div>
-     <div style={{marginLeft:"5px"}}> <Pagination current={page} onChange={(page)=>setPage(page)}   /></div>
-   </div>
+  
 
     <Wrapper >
     

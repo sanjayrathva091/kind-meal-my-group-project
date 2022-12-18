@@ -22,12 +22,12 @@ const Getdatafailure =()=>{
    }
 }
 
-const GetdataMainfn =({task,task1,page})=>(dispatch)=>{
+const GetdataMainfn =(data)=>(dispatch)=>{
    
-    if(task){
+    if(data){
         
         dispatch(Getdata())
-            return axios.get(`https://kindmeals.onrender.com/KindMonents_upper?Location=${task}`)
+            return axios.get(`https://kindmeals.onrender.com/KindMonents_upper?Location=${data}`)
             .then((res)=>{
         dispatch(Getdatasuccess(res.data))
         // console.log(res.data)
@@ -35,21 +35,11 @@ const GetdataMainfn =({task,task1,page})=>(dispatch)=>{
                 dispatch(Getdatafailure())
             })
     }
-    else if(task1){
-        
-        dispatch(Getdata())
-        return axios.get(`https://kindmeals.onrender.com/KindMonents_upper?Location=${task1}`)
-        .then((res)=>{
-    dispatch(Getdatasuccess(res.data))
-    // console.log(res.data)
-        }).catch((err)=>{
-            dispatch(Getdatafailure())
-        })
-    }
+ 
     else{
         
         dispatch(Getdata())
-            return axios.get(`https://kindmeals.onrender.com/KindMonents_upper?_page=${page}&_limit=6`)
+            return axios.get(`https://kindmeals.onrender.com/KindMonents_upper`)
             .then((res)=>{
         dispatch(Getdatasuccess(res.data))
         // console.log(res.data)
@@ -57,13 +47,7 @@ const GetdataMainfn =({task,task1,page})=>(dispatch)=>{
                 dispatch(Getdatafailure())
             }) 
     }
-    // if(data ){
-    //  
-    // }
-   
-    // else{
-    //   
-    // }
+ 
    
 }
 
