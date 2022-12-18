@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import MemberFunCard from "../../Components/AdminUserComponents/MemberFunCard";
@@ -43,9 +43,6 @@ const AdminPage = () => {
     setShop(initialState);
   };
 
-  useEffect(() => {
-    console.log(shop);
-  }, [shop]);
   return (
     <AdminPageWrapper>
       <AdminsPage>

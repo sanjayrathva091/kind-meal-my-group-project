@@ -58,6 +58,9 @@ export default NavBar;
 const NavBarWrapper = styled.div`
   border: 0px solid black;
   background-color: #2bb673;
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 const NavBarSection = styled.nav`

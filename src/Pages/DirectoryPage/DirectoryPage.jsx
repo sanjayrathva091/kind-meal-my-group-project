@@ -7,13 +7,12 @@ import { getVegRes } from "../../Redux/AppReducer/actions";
 
 const DirectoryPage = () => {
   const shopDir = useSelector((store) => store.AppReducer.vegRes);
-  const totalData = useSelector((store) => store.AppReducer.totalData);
-
+  const totalShop = useSelector((store) => store.AppReducer.totalShop);
+  const perPageShop = useSelector((store) => store.AppReducer.perPageLimit);
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const [city, setCity] = useState(searchParams.get("Address.City") || "");
   const [pageNo, setPageNo] = useState(searchParams.get("_page") || 1);
-  const [btnArr] = useState(Array(Math.ceil(41 / 4)).fill(1));
 
   const FilterByCityHandler = (e) => {
     setCity(e.target.value);
@@ -24,33 +23,20 @@ const DirectoryPage = () => {
   };
 
   useEffect(() => {
-    console.log("Page No:", pageNo, searchParams.get("_page"));
-    const queryParams = {
-      _page: pageNo,
-      _limit: 4,
-    };
-    if (city !== "") {
-      queryParams["Address.City"] = city;
-    }
-    setSearchParams(queryParams);
-  }, [city, pageNo, searchParams, setSearchParams]);
-
-  useEffect(() => {
-    const city = searchParams.get("Address.City");
-    const page = searchParams.get("_page");
-    const limit = searchParams.get("_limit");
-    console.log("hello", city, page, limit);
     const queryParams = {
       params: {
-        _page: page,
-        _limit: limit,
+        _page: pageNo,
+        _limit: perPageShop,
       },
     };
-    if (city !== null) {
+    if (city !== "") {
       queryParams.params["Address.City"] = city;
     }
+    setSearchParams(queryParams.params);
     dispatch(getVegRes(queryParams));
-  }, [city, searchParams, dispatch]);
+  }, [city, pageNo, dispatch, perPageShop, setSearchParams]);
+
+  const btnArr = new Array(Math.ceil(totalShop / perPageShop)).fill("foo");
 
   return (
     <DirectoryPageWrapper>
@@ -82,7 +68,6 @@ const DirectoryPage = () => {
             </div>
           </div>
         </div>
-        {console.log("data size", btnArr, totalData)}
 
         <div className="main-container">
           <div className="filter-container">
@@ -113,7 +98,9 @@ const DirectoryPage = () => {
                 />
               );
             })}
-            {shopDir.length === 0 && <h1>No Items Found</h1>}
+            {shopDir.length === 0 && (
+              <h1 className="no-items-found">No Items Found</h1>
+            )}
           </div>
           <div className="pageBtn">
             <span>Page: </span>
@@ -160,9 +147,15 @@ const Directory = styled.div`
     color: #444444;
   }
   .searchShop {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
     justify-content: space-between;
     padding: 0.95rem;
+  }
+  @media screen and (max-width: 1024px) {
+    .searchShop {
+      grid-template-columns: repeat(2, max-content);
+    }
   }
   .searchShop input {
     border: 1px solid #cecece;
@@ -216,6 +209,12 @@ const Directory = styled.div`
     background-color: #04be5a;
     color: white;
   }
+  @media screen and (max-width: 1024px) {
+    .filter-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   .cards-container {
     margin: 0 8.8rem;
     display: grid;
@@ -238,6 +237,10 @@ const Directory = styled.div`
     cursor: pointer;
   }
   .pageBtn button:focus {
+    color: #f53838;
+  }
+  .no-items-found {
+    font-weight: 500;
     color: #f53838;
   }
 `;

@@ -39,11 +39,11 @@ const addShopFailure = () => {
 
 const getVegRes = (params) => (dispatch) => {
     dispatch(getVegResRequest());
-    console.log(params)
+
     return axios
         .get(`https://kindmealmy-directory-page.onrender.com/vegetarian_directory`, params)
         .then((response) => {
-            console.log('res:', response);
+
             dispatch(getVegResSuccess(response))
         })
         .catch((err) => dispatch(getVegResFailure(err)))
@@ -53,8 +53,8 @@ const addShop = (payload) => (dispatch) => {
     dispatch(addShopRequest());
     return axios
         .post(`https://kindmealmy-directory-page.onrender.com/vegetarian_directory`, payload)
-        .then((res) => console.log('response:', res))
-        .catch((err) => console.log(err));
+        .then((res) => dispatch({ type: types.ADD_SHOP_SUCCESS, payload: res.data }))
+        .catch((err) => dispatch({ type: types.ADD_SHOP_FAILURE }));
 };
 
 export {

@@ -1,6 +1,7 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { auth } from "../../firebase-config";
 import { login } from "../../Redux/AuthReducer/authAction";
@@ -8,7 +9,12 @@ import { login } from "../../Redux/AuthReducer/authAction";
 const Login = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [userType, setUserType] = useState("User");
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  onAuthStateChanged(auth, () => {});
 
   const handleEmailInput = (e) => {
     setLoginEmail(e.target.value);
@@ -18,9 +24,15 @@ const Login = () => {
     setLoginPassword(e.target.value);
   };
 
+  const UserTypeHandler = (e) => {
+    setUserType(e.target.value);
+  };
+
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(auth, loginEmail, loginPassword));
+    dispatch(login(auth, loginEmail, loginPassword, userType)).then((res) => {
+      navigate(location.state);
+    });
     setLoginEmail("");
     setLoginPassword("");
   };
@@ -43,9 +55,21 @@ const Login = () => {
             <input type="password" onChange={handlePasswordInput} />
           </div>
           <div>
-            <input type="radio" name="UserType" value="User" defaultChecked />{" "}
+            <input
+              type="radio"
+              name="UserType"
+              value="User"
+              onChange={UserTypeHandler}
+              defaultChecked
+            />{" "}
             User
-            <input type="radio" name="UserType" value="Admin" /> Admin
+            <input
+              type="radio"
+              name="UserType"
+              value="Admin"
+              onChange={UserTypeHandler}
+            />{" "}
+            Admin
           </div>
           <div>
             <button>Login</button>

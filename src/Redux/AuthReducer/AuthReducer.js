@@ -1,11 +1,12 @@
-
+import { auth } from '../../firebase-config';
 import * as types from './authActionTypes';
 
 export const initialUserState = {
-    isAuth: false,
+    isAuth: auth.currentUser ? true : false,
     isLoading: false,
     isError: false,
-    user: {}
+    user: {},
+    userType: "User",
 }
 
 const AuthReducer = (state = initialUserState, actions) => {
@@ -18,7 +19,7 @@ const AuthReducer = (state = initialUserState, actions) => {
                 isLoading: true,
             }
         case types.POST_REGISTER_SUCCESS:
-            console.log('Ath', payload);
+
             return {
                 ...state,
                 isLoading: false,
@@ -35,12 +36,30 @@ const AuthReducer = (state = initialUserState, actions) => {
                 isLoading: true,
             }
         case types.POST_LOGIN_SUCCESS:
-            console.log('logIn', payload);
+
             return {
                 ...state,
+                isAuth: true,
                 isLoading: false,
+                userType: payload
             }
         case types.POST_LOGIN_FAILURE:
+            return {
+                ...state,
+                isError: true,
+            }
+        case types.POST_LOGOUT_REQUEST:
+            return {
+                ...state,
+                isLoading: true,
+            }
+        case types.POST_LOGOUT_SUCCESS:
+            return {
+                ...state,
+                isAuth: false,
+                isLoading: false,
+            }
+        case types.POST_LOGOUT_FAILURE:
             return {
                 ...state,
                 isError: true,

@@ -39,26 +39,25 @@ const postRegisterFailure = () => {
 
 const register = (auth, email, password, user) => (dispatch) => {
     return createUserWithEmailAndPassword(auth, email, password).then((response) => {
-        console.log(response, 'and', user);
+
         dispatch(postRegisterSuccess(user));
-    }).catch((error) => { console.log(error) })
+    }).catch((error) => { console.log('Registration Failed: ', error) })
 }
 
-const login = (auth, email, password) => (dispatch) => {
+const login = (auth, email, password, userType) => (dispatch) => {
     dispatch({ type: types.POST_LOGIN_REQUEST });
     return signInWithEmailAndPassword(auth, email, password).then((response) => {
-        console.log('LoginUserSuccess', response);
-        dispatch({ type: types.POST_LOGIN_SUCCESS, payload: response });
-    }).catch((error) => { console.log(error) });
+
+        dispatch({ type: types.POST_LOGIN_SUCCESS, payload: userType });
+        return 'Login Successful';
+    }).catch((error) => { console.log('Login Failed: ', error) });
 }
 
-const logout = async (Auth) => {
-    try {
-        const logOut = await signOut(Auth);
-        console.log('LogOut Successfully:', logOut);
-    } catch (error) {
-        console.log('Log Out Failed:', error.message);
-    }
+const logout = (Auth) => (dispatch) => {
+    dispatch({ type: types.POST_LOGOUT_REQUEST });
+    return signOut(Auth)
+        .then((response) => { dispatch({ type: types.POST_LOGOUT_SUCCESS }) })
+        .catch((error) => { console.log('Log out Failed', error) });
 }
 
 export {
