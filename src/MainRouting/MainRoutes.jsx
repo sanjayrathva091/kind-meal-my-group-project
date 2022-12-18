@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { MainKindMoments } from '../M/MainKindMoments'
+
 import { Mobilepage } from '../Pages_0381/Mobilepage'
 
-
+import{MainKindMoments} from "../M/MainKindMoments"
 
 const MainRoutes = () => {
   return (
