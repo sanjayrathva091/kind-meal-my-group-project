@@ -10,7 +10,7 @@ import './HomePage.css'
 const HomePage = () => {
   return (
     <div>
-      <Navbar />
+      
       <Slider/>
       <HeroCards />
       <div className='white'>
@@ -18,7 +18,7 @@ const HomePage = () => {
       <img src={media} alt="p" className='media'/>
       <img src={banner} alt="p" className='banner'/>
       </div>
-      <Footer />
+     
     </div>
   )
 }

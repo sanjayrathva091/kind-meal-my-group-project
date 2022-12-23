@@ -27,11 +27,8 @@ if(task){
   setTask1("")
   dispatch(GetdataMainfn(task))
 }else{
-  setTask("")
+  dispatch(GetdataMainfn())
 }
-
-  
-   
 }
 
 
@@ -49,7 +46,7 @@ if(task1){
 
   return (
     <div>
-        <h1>Data 1</h1>
+        
 <InputWrapper>
 
 <button  style={{backgroundColor:"#2bb673 ",color:"white",height:"30px",width:"130px",

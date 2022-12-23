@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export const Mobilepage = () => {
+ const Mobilepage = () => {
 
 
 const Appstore =()=>{
@@ -49,3 +49,4 @@ Yummylicious food at irresistible prices. One click (alright, it's a tap) to gra
     </div>
   )
 }
+export {Mobilepage}
