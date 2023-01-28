@@ -15,7 +15,7 @@ const Navbar = () => {
     <div class="wrapper">
       <div class="menu">
         <div class="menu-item"><a href="/">Home</a></div>
-        <div class="menu-item"><a href="#">Meal Deals</a></div>
+        <div class="menu-item"><a href="/mealdeals">Meal Deals</a></div>
         <div class="menu-item"><a href="/MainKindMoments">KindMoments</a></div>
         <div class="menu-item"><a href="#">Recipes</a></div>
         <div class="menu-item"><a href="#">Directory</a></div>
