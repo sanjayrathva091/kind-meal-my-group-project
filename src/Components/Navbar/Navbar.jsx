@@ -1,5 +1,7 @@
 import React from 'react'
 import './Navbar.css'
+import Login from '../../Pages_0381/Login'
+import Logout from '../../Pages_0381/Logout'
 
 const Navbar = () => {
   return (
@@ -17,8 +19,8 @@ const Navbar = () => {
         <div class="menu-item"><a href="/">Home</a></div>
         <div class="menu-item"><a href="#">Meal Deals</a></div>
         <div class="menu-item"><a href="/MainKindMoments">KindMoments</a></div>
-        <div class="menu-item"><a href="#">Recipes</a></div>
-        <div class="menu-item"><a href="#">Directory</a></div>
+        <div class="menu-item"><a href="/"><Login/></a></div>
+        <div class="menu-item"><a href="/"><Logout/></a></div>
         <div class="menu-item"><a href="#">Articles</a></div>
         <div class="menu-item"><a href="/Mobile">Mobile App</a></div>
         <div class="menu-item"><a href="/helppage">Help</a></div>
