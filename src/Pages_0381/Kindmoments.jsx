@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { GetdataMainfn } from '../Redux_0381/action'
 import { useSearchParams } from 'react-router-dom'
 import Pagination from './Pagination'
+import { Box, SimpleGrid } from '@chakra-ui/react'
 
 export const Kindmoments = () => {
 
@@ -45,26 +46,36 @@ if(task1){
 
 
   return (
-    <div>
+    <Box width={"90%"} margin={"auto"} >
         
-<InputWrapper>
+        <SimpleGrid columns={[2, 3, 6]} spacing='10px' mt="50px" >
+  
 
+<Box> 
 <button  style={{backgroundColor:"#2bb673 ",color:"white",height:"30px",width:"130px",
-borderRadius:"7px" , borderColor:"transparent",marginLeft:"30px"}}  >Moments</button>
+borderRadius:"7px" , borderColor:"transparent"}}  >Moments</button>
+</Box>
 
+<Box> 
 <button  style={{backgroundColor:"#f0f0f0",color:"black",height:"30px",width:"130px",
-borderRadius:"7px" , borderColor:"transparent",marginLeft:"30px"}}  >Deal Reviews</button>
+borderRadius:"7px" , borderColor:"transparent"}}  >Deal Reviews</button>
+</Box>
 
+<Box> 
 <button  style={{backgroundColor:"#f0f0f0",color:"black",height:"30px",width:"130px",
-borderRadius:"7px" , borderColor:"transparent",marginLeft:"30px"}}  >Following</button>
+borderRadius:"7px" , borderColor:"transparent"}}  >Following</button>
+</Box>
 
-<input style={{height:"25px",borderRadius:"7px",width:"200px",marginLeft:"150px" }}
+<Box> 
+<input style={{height:"25px",borderRadius:"7px",width:"200px" }}
 value={task} placeholder="Search By Country"
  onChange={(e)=>setTask(e.target.value)}   />
+</Box>
 
 
+<Box> 
 <select value={task1} style={{height:"30px",width:"150px",borderRadius:"7px"
- ,marginLeft:"20px", borderColor:"#f0f0f0"
+ , borderColor:"#f0f0f0"
 }}   onChange={(e)=>setTask1(e.target.value)}
 
 >
@@ -74,52 +85,28 @@ value={task} placeholder="Search By Country"
     <option value="Thailand" >Thailand</option>
     <option value="Malaysia" >Malaysia</option>
 </select>
+</Box>
 
+<Box> 
 <button style={{backgroundColor:"#f53838",color:"white",height:"30px",width:"100px",
-borderRadius:"7px" , borderColor:"transparent",marginLeft:"30px"
+borderRadius:"7px" , borderColor:"transparent"
 }} onClick={SearchByplace} >Search</button>
+</Box>
 
-</InputWrapper>
     
-  
+</SimpleGrid>
 
-    <Wrapper >
     
+<SimpleGrid columns={[1,2,3]} spacing='10px' mt="50px" > 
 {
     kindmeallist.length >0 && kindmeallist.map((item)=>{
         return <Kindcard key={item.id} item={item} />
     })
 }
-    </Wrapper>
-    </div>
+</SimpleGrid>
+
+    </Box>
   )
 }
 
 
-const Wrapper = styled.div`
-
- width:90%;
- margin:auto;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-   grid-gap: 20px;
-    // border:1px solid black;
-    
-
-    @media  screen and (max-width: 600px) {
-        grid-template-columns: repeat(2,1fr);
-   grid-gap: 2px;
-      }
-      @media  screen and (max-width: 420px) {
-        grid-template-columns: repeat(1,1fr);
-   grid-gap: 2px;
-      }
-`
-const InputWrapper = styled.div`
-height :50px;
-width:90%;
-margin :auto;
-// border :1px solid black;
-margin-top:20px  
-    
-`

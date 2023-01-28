@@ -1,3 +1,4 @@
+import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 
 
@@ -13,40 +14,50 @@ const Googlestore =()=>{
 }
 
   return (
-    <div>
+    <Box >
 
-<div  style={{backgroundColor :"#f0f0f0"}} >
-<h1>KindMeal Mobile Apps on iOS & Android</h1>
-<h4>
+<Box   backgroundColor ="#f0f0f0" textAlign={"left"} >
+<Box width="90%"   m="auto" >
+<Text fontWeight={"bold"}  fontSize={"3xl"} >KindMeal Mobile Apps on iOS & Android</Text>
+<Text  fontSize={"2xl"}>
 Yummylicious food at irresistible prices. One click (alright, it's a tap) to grab a coupon, and just another click to use it. No waiting, no upfront payment.
-</h4>
-<h4>Share delicious moments and exhibit your camwhore skills. Follow foodies to discover great dining places.</h4>
+</Text>
+<Text fontSize={"2xl"}>Share delicious moments and exhibit your camwhore skills. Follow foodies to discover great dining places.</Text>
 
-<h4>We know you're hungry. Time to download the app</h4>
+<Text fontSize={"2xl"}>We know you're hungry. Time to download the app</Text>
 
-<h4>Psst.. Save the cows, save the world!</h4>
+<Text fontSize={"2xl"}>Psst.. Save the cows, save the world!</Text>
+</Box>
 
-</div>
+</Box >
 
-<div>
-    <div>
+<Box  >
+   
         <img  src ="https://www.kindmeal.my/images/mobile_app_large.png" />
-    </div>
+    
 
-</div>
+</Box >
 
 
 
-<div  style={{backgroundColor :"#f0f0f0",   display:"flex" , marginLeft:"10%" ,gap :"20px", marginTop:"50px"}}>
-    <div onClick={Appstore} >
+
+
+<SimpleGrid columns={[1, 2, 2]} 
+spacing='0.3px' w="90%" m="auto"
+ 
+ 
+ marginTop="50px"
+ >
+<Box  onClick={Appstore} >
 <img src ="https://www.kindmeal.my/images/mobile_download_ios.png"   />
-    </div>
+    </Box >
 
-    <div  onClick={Googlestore} >
+    <Box   onClick={Googlestore} >
     <img src ="https://www.kindmeal.my/images/mobile_download_android.png"   />
-    </div>
-</div>
-    </div>
+    </Box >
+</SimpleGrid>
+
+    </Box >
   )
 }
 export {Mobilepage}

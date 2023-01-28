@@ -3,7 +3,7 @@
 import axios from "axios"
 import { useEffect } from "react"
 import { useState } from "react"
-
+import { Box, Image } from '@chakra-ui/react'
 const UseTimeout = ()=>{
 const [running,setRunning] = useState(true)
 const [timer,setTimmer] = useState(1)
@@ -41,11 +41,11 @@ if(timer==8){
     setTimmer(1)
 }
 return(
-    <div style={{marginTop:"40px"}}   >
+    <Box    w="80%"  m="auto" marginTop="40px"  >
 {/* <span><h2>{timer}</h2></span> */}
 
-<img  src={data.image} alt="Loading"   />
-    </div>
+<Image  src={data.image} alt="Loading"   />
+    </Box>
     
 )
 
