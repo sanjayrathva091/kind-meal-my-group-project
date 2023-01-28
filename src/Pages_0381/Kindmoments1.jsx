@@ -46,7 +46,7 @@ marginBottom={"20px"}
     
 <Box display="flex"  margin="auto"  gap="20x" w={[300, 400, 500]}   >
     <Box>Pages :</Box>
-     <Box marginLeft="5px"> <Pagination current={page} onChange={(page)=>setPage(page)}   /></Box>
+     <Box marginLeft="5px"> <Pagination current={page} onChange={(page)=>setPage(page)}   /> </Box>
    </Box>
 
    </Box>
