@@ -41,7 +41,7 @@ const Navbar = () => {
 
           {isAuthenticated ? (
             <li>
-              <button class="active" onClick={() => logout({ returnTo: window.location.origin })}>sLOGOUT</button>
+              <button class="active" onClick={() => logout({ returnTo: window.location.origin })}>LOGOUT</button>
             </li>
           ) : (
             <li>
