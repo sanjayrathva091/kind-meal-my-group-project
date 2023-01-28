@@ -1,3 +1,4 @@
+import { Box, SimpleGrid } from '@chakra-ui/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -33,53 +34,46 @@ useEffect(()=>{
 
   return (
     
-    <div>
+   <Box  width="90%" m="auto" >
+
+
         
-<InputWrapper>
+<Box height ="50px"width="90%"  margin ="auto"marginTop={"20px"}
+// border ='1px solid black'
+margin-top="20px"
+marginBottom={"20px"}
+> 
     
-<div style={{display:"flex" , margin:"auto" , gap:"20x", width:"90%"}}  >
-    <div>Pages :</div>
-     <div style={{marginLeft:"5px"}}> <Pagination current={page} onChange={(page)=>setPage(page)}   /></div>
-   </div>
+<Box display="flex"  margin="auto"  gap="20x" w={[300, 400, 500]}   >
+    <Box>Pages :</Box>
+     <Box marginLeft="5px"> <Pagination current={page} onChange={(page)=>setPage(page)}   /></Box>
+   </Box>
+
+   </Box>
 
 
-</InputWrapper>
-<Wrapper>
-{
+<SimpleGrid columns={[1, 2, 3]} spacing='40px'>
+  
+  {
 DataList.length>0 && DataList.map((item)=>{
     return <Kindcard1 key ={item.id} item={item} />
 })
 }
-    </Wrapper>
+
+ 
+  
+</SimpleGrid>
 
 
-    </div>
+   
+
+
+</Box>
   )
 }
-const Wrapper = styled.div`
 
- width:90%;
- margin:auto;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-   grid-gap: 20px;
-    // border:1px solid black;
-    
-
-    @media  screen and (max-width: 600px) {
-        grid-template-columns: repeat(2,1fr);
-   grid-gap: 2px;
-      }
-      @media  screen and (max-width: 420px) {
-        grid-template-columns: repeat(1,1fr);
-   grid-gap: 2px;
-      }`
 
       const InputWrapper = styled.div`
-height :50px;
-width:90%;
-margin :auto;
-// border :1px solid black;
-margin-top:20px  
+ 
     
 `
