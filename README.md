@@ -49,6 +49,7 @@ For login and Registration
 
 1. Auth0
 
+``Use Real Email id and password to login and signup``
 # Home page
 ![KindmealHome](https://user-images.githubusercontent.com/107460745/215429177-7675dca4-dd32-4529-9051-f134fa548a95.png)
 # Signup and Validation
