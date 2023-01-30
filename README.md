@@ -28,6 +28,7 @@ https://y-nmpratik9425-gmailcom.vercel.app/
 - Product page with all sorting and searching
 - Api Fetching
 - Login and Register page
+- pagination
 - Awesome modern minimalist UI
 
 ### Technologies Used:
