@@ -1,63 +1,45 @@
-/** @format */
-
-import React from "react";
-import "./Navbar.css";
+import React from 'react'
+import './Navbar.css'
 import { useAuth0 } from "@auth0/auth0-react";
-
 const Navbar = () => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
-  
   return (
     <div>
-      <nav>
-        <input type="checkbox" id="check" />
-        <label for="check" class="checkbtn">
-          <i class="fas fa-bars"></i>
-        </label>
-        <label class="logo">
-          <img
-            src="https://www.kindmeal.my/images/logo-kindmeal.png"
-            alt="logo"
-          />
-        </label>
-        <ul>
-          <li>
-            <a class="active" href="/">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="/MealDeals">Meal Deals</a>
-          </li>
-          <li>
-            <a href="/MainKindMoments">KindMoments</a>
-          </li>
-          <li>
-            <a href="/Mobile">Mobile App</a>
-          </li>
-          <li>
-            <a href="/helppage">Help</a>
-          </li>
-          {isAuthenticated && 
-          <li>
-            <a className="active">{user.name}</a>
-          </li>
-          
-          } 
-
+     <header class="header">
+  <nav class="navbar">
+    <input type="checkbox" id="nav" class="hidden" />
+    <label for="nav" class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+     </label>
+    <div class="wrapper">
+      <div class="menu">
+        <div class="menu-item"><a href="/">Home</a></div>
+        <div class="menu-item"><a href="/mealdeals">Meal Deals</a></div>
+        <div class="menu-item"><a href="/MainKindMoments">KindMoments</a></div>
+        <div class="menu-item"><a href="#">Recipes</a></div>
+        <div class="menu-item"><a href="#">Directory</a></div>
+        <div class="menu-item"><a href="/helppage">Help</a></div>
+        <div class="menu-item"><a href="/Mobile">Mobile App</a></div>
+        {isAuthenticated && 
+            <div class="menu-item"><a>{user.name}</a></div>
+         } 
           {isAuthenticated ? (
-            <li>
+           
               <button class="active" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>LOGOUT</button>
-            </li>
+         
           ) : (
-            <li>
+            
               <button class="active" onClick={() => loginWithRedirect()}>LOGIN</button>
-            </li>
+             
           )}
-        </ul>
-      </nav>
+      </div>
     </div>
-  );
-};
+  </nav>
+</header>
+    </div>
+  )
+}
 
-export default Navbar;
+export default Navbar
