@@ -96,12 +96,13 @@ Getdata()
      <Box marginLeft="5px"> <Pagination current={page} onChange={(page)=>setPage(page)}   /> </Box>
    </Box>
 
-   
+   {/* id function  */}
 
-  <SimpleGrid columns={[1, 2, 2]} w="90%" margin={"auto"} mt="100px" gap="25px"  >
+  <SimpleGrid columns={[1, 2, 2]} w="90%" margin={"auto"} mt="100px" gap="25px" 
+   >
   {
     data.length >0 && data.map((item)=>{
-        return <MealdealCard key={item.id}  item={item} />
+        return <MealdealCard key={item.id}  item={item}  />
 
     })
   }
