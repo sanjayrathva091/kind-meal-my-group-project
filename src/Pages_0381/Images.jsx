@@ -7,6 +7,7 @@ import { Box, Image } from '@chakra-ui/react'
 const UseTimeout = ()=>{
 const [running,setRunning] = useState(true)
 const [timer,setTimmer] = useState(1)
+
 const [data,setData]=useState("")
 
 
@@ -40,6 +41,7 @@ return ()=>clearInterval(id)
 if(timer==8){
     setTimmer(1)
 }
+
 return(
     <Box    w="80%"  m="auto" marginTop="40px"  >
 {/* <span><h2>{timer}</h2></span> */}
