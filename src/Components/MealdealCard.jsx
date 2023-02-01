@@ -1,11 +1,15 @@
 import { Box, Button, Image, Text } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
 
 
 export const MealdealCard = ({item}) => {
-    
+    const navigate = useNavigate()
+    const Getid=(id)=>{
+        navigate(`/singlepage/${id}`)
+        }
     
   return (
-    <Box   w="100%" h={{base:"600px" , md:"600px",lg:""}}   >
+    <Box   w="100%" h={{base:"600px" , md:"600px",lg:""}} onClick={()=>Getid(item.id)}  >
 
 <Image  w="100%" h="45%"  src={item.dishImage} />
 <Text fontSize={"20px"} fontWeight="bold" >{item.chefName}-{item.ShopName}</Text>
